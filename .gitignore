@@ -12,6 +12,12 @@
 
 # testing
 /coverage
+test-results/
+playwright-report/
+playwright/.cache/
+
+# local prototypes
+example-for-helpful-scenes/
 
 # next.js
 /.next/
