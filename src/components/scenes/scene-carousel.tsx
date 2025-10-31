@@ -321,6 +321,16 @@ export function SceneCarousel({ scenes }: SceneCarouselProps) {
   useEffect(() => {
     if (!activeScene) return;
 
+    // Reset the scene whenever it becomes active so the animation can replay.
+    setCompleted((prev) => {
+      if (!prev[activeScene.id]) {
+        return prev;
+      }
+      const next = { ...prev };
+      delete next[activeScene.id];
+      return next;
+    });
+
     const normalized = transcript.trim().toLowerCase();
     if (ignoreTranscriptRef.current) {
       if (!normalized) {

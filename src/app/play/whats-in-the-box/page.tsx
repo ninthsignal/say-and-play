@@ -53,7 +53,7 @@ const gifts: GiftDefinition[] = [
 const prompts: VoicePromptConfig[] = [
   {
     id: "red-box",
-    label: "Can you open the red box?",
+    label: "Open the red box",
     audio: "/audio/phrases/open-red-box.mp3",
     phraseVariants: [
       "can you open the red box",
@@ -65,7 +65,7 @@ const prompts: VoicePromptConfig[] = [
   },
   {
     id: "blue-box",
-    label: "Can you open the blue box?",
+    label: "Open the blue box",
     audio: "/audio/phrases/open-blue-box.mp3",
     phraseVariants: [
       "can you open the blue box",
@@ -77,7 +77,7 @@ const prompts: VoicePromptConfig[] = [
   },
   {
     id: "first-box",
-    label: "Can you open the first box?",
+    label: "Open the first box",
     audio: "/audio/phrases/open-first-box.mp3",
     phraseVariants: [
       "can you open the first box",
@@ -89,7 +89,7 @@ const prompts: VoicePromptConfig[] = [
   },
   {
     id: "last-box",
-    label: "Can you open the last box?",
+    label: "Open the last box",
     audio: "/audio/phrases/open-last-box.mp3",
     phraseVariants: [
       "can you open the last box",
@@ -101,7 +101,7 @@ const prompts: VoicePromptConfig[] = [
   },
   {
     id: "polka-box",
-    label: "Can you open the box with polka dots?",
+    label: "Open the box with polka dots",
     audio: "/audio/phrases/open-polka-box.mp3",
     phraseVariants: [
       "can you open the polka dot box",
@@ -116,7 +116,7 @@ const prompts: VoicePromptConfig[] = [
   },
   {
     id: "green-box",
-    label: "Can you open the green box?",
+    label: "Open the green box",
     audio: "/audio/phrases/open-green-box.mp3",
     phraseVariants: [
       "can you open the green box",
