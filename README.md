@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Say & Play
 
-## Getting Started
+Say & Play is a voice-first learning playground that helps children with speech delays practice everyday communication. Kids unlock mini-scenes by speaking target phrases, interact with animated objects using touch gestures, and hear instant feedback from modeled prompts.
 
-First, run the development server:
+### Highlights
+
+- **Voice-powered play** – Web Speech API + `react-speech-recognition` listen for phrases with adjustable tolerance.
+- **Touch & motion** – `@use-gesture/react` and React Spring enable swipes, drags, and animated transitions.
+- **3D gift playground** – Three.js renders reorderable presents that spring open when kids speak the right color or order.
+- **Phrase Rainbow scenes** – Everyday requests (juice, hungry, thirsty) transform cups, plates, and glasses on command.
+- **Audio prompts** – Tap-to-play voice clips under `public/audio/phrases/*` keep the experience accessible.
+
+### Tech Stack
+
+- Next.js (App Router) with static export for GitHub Pages deployment
+- React 19, TypeScript, Tailwind utilities, ShadCN UI
+- React Spring (web & three), Three.js, @use-gesture/react
+- Playwright end-to-end tests, ESLint/TypeScript for linting
+
+### Getting Started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install        # install dependencies
+npm run dev        # start dev server on http://localhost:3000
+
+npm run lint       # type-check + lint
+npm run test:e2e   # Playwright regression suite
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Add or replace audio prompts in `public/audio/phrases`. Keep filenames kebab-case (`im-hungry.mp3`) so imports remain consistent.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build & Export
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Static export is configured via `next.config.ts` (`output: "export"`).
 
-## Learn More
+```bash
+npm run build      # production build
+npm run export     # optional: write static assets to out/
+```
 
-To learn more about Next.js, take a look at the following resources:
+Publish the `out/` directory to GitHub Pages or hook it into an automated deploy workflow.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `src/app/page.tsx` – landing “Open Seseme” voice gate
+- `src/app/play/page.tsx` – selection hub for games
+- `src/app/play/whats-in-the-box` – 3D gift playground route
+- `src/app/play/phrase-rainbow` – everyday phrase scenes route
+- `src/components/whats-in-the-box` – Three.js gift rendering + controls
+- `src/components/scenes` – Phrase Rainbow carousel and SVG graphics
+- `public/audio/phrases` – placeholder voice prompts
 
-## Deploy on Vercel
+### Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repo and create a feature branch: `git checkout -b feature/my-idea`.
+2. Make changes and add tests or audio placeholders when needed.
+3. Run `npm run lint` (and `npm run test:e2e` for gameplay updates).
+4. Commit with clear messages and submit a pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Please ensure new games support both speech input and touch interactions.
+
+### License
+
+MIT © ninthsignal
