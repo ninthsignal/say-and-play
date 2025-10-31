@@ -21,7 +21,6 @@ example-for-helpful-scenes/
 
 # next.js
 /.next/
-/out/
 
 # production
 /build
