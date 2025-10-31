@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useSpeechSettings } from "@/components/speech/settings-context";
 import { phrasesMatch } from "@/lib/speech";
+import { withBasePath } from "@/lib/utils";
 
 const PASS_PHRASES = ["open sesame", "open seseme"];
 
@@ -41,7 +42,7 @@ export default function LandingPage() {
   }, []);
 
   useEffect(() => {
-    audioRef.current = new Audio("/audio/phrases/open-seseme.mp3");
+    audioRef.current = new Audio(withBasePath("/audio/phrases/open-seseme.mp3"));
     const audio = audioRef.current;
 
     if (!audio) return undefined;

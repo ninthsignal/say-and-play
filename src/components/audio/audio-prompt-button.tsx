@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn, withBasePath } from "@/lib/utils";
 
 type AudioPromptButtonProps = {
   label: string;
@@ -18,7 +18,7 @@ export function AudioPromptButton({ label, src, className }: AudioPromptButtonPr
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const audio = new Audio(src);
+    const audio = new Audio(withBasePath(src));
 
     const handleEnded = () => setIsPlaying(false);
     const handleError = () => {
