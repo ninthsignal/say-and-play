@@ -321,16 +321,6 @@ export function SceneCarousel({ scenes }: SceneCarouselProps) {
   useEffect(() => {
     if (!activeScene) return;
 
-    // Reset the scene whenever it becomes active so the animation can replay.
-    setCompleted((prev) => {
-      if (!prev[activeScene.id]) {
-        return prev;
-      }
-      const next = { ...prev };
-      delete next[activeScene.id];
-      return next;
-    });
-
     const normalized = transcript.trim().toLowerCase();
     if (ignoreTranscriptRef.current) {
       if (!normalized) {
@@ -371,7 +361,21 @@ export function SceneCarousel({ scenes }: SceneCarouselProps) {
         if (hasIntent) {
           const nextDirection: 1 | -1 = mx < 0 || dx < 0 ? 1 : -1;
           setDirection(nextDirection);
-          setActiveIndex((prev) => (prev + nextDirection + sceneCount) % sceneCount);
+          setActiveIndex((prev) => {
+            const next = (prev + nextDirection + sceneCount) % sceneCount;
+            const sceneLeaving = scenes[prev];
+            if (sceneLeaving) {
+              setCompleted((completedState) => {
+                if (!completedState[sceneLeaving.id]) {
+                  return completedState;
+                }
+                const nextCompleted = { ...completedState };
+                delete nextCompleted[sceneLeaving.id];
+                return nextCompleted;
+              });
+            }
+            return next;
+          });
         }
       }
     },
